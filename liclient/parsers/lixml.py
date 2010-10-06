@@ -1,3 +1,4 @@
+from datetime import datetime
 from lxml import etree
 import mappers
 import re
@@ -163,6 +164,11 @@ class LinkedInProfileParser(LinkedInXMLParser):
             for item in p.getchildren():
                 if item.tag == 'location':
                     person['location'] = item.getchildren()[0].text
+                elif item.tag == "current-status-timestamp":
+                    date, time = item.text.split(' ')
+                    month, day, year = date.split('/')
+                    hour, minute, second = time.split(':')
+                    person['current_status_timestamp'] = datetime(int(year), int(month), int(day), int(hour), int(minute))
                 else:
                     person[re.sub(r'-', '_', item.tag)] = item.text
             obj = mappers.Profile(person, p)
