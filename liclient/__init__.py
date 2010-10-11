@@ -281,7 +281,7 @@ class LinkedInAPI(object):
                 trial = int(d.text)
                 if len(d.text) > 8:
                     dt = datetime.datetime.fromtimestamp(float(trial)/1000)
-                    d.text = dt.strftime('%m/%d/%Y %I:%M:%S')
+                    d.text = dt.strftime('%m/%d/%Y %H:%M:%S')
             except:
                 continue
         return etree.tostring(data)
