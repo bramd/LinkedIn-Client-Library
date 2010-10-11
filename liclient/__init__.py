@@ -268,7 +268,6 @@ class LinkedInAPI(object):
         selector_string = selector_string.strip(',')
         selector_string += ')'
         prep_url += selector_string
-        print prep_url
         return prep_url
     
     def check_network_code(self, code):
