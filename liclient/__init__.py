@@ -230,7 +230,6 @@ class LinkedInAPI(object):
                 else:
                     prep_url = self.append_sequential_arg(k, kws[k], prep_url)
         prep_url = re.sub('&&', '&', prep_url)
-        print prep_url
         return user_token, prep_url
     
     def append_id_args(self, ids, prep_url):
